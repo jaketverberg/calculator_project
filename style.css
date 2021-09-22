@@ -1,0 +1,60 @@
+html {
+    background-color: black;
+}
+
+.readOutArea {
+    grid-area: readOut;
+    border: 1px solid white;
+}
+
+.topRow {
+    grid-area: topRow;
+    border: 1px solid white;
+}
+
+.secondRow {
+    grid-area: secondRow;
+    border: 1px solid white;
+}
+
+.thirdRow {
+    grid-area: thirdRow;
+    border: 1px solid white;
+}
+
+.fourthRow {
+    grid-area: fourthRow;
+    border: 1px solid white;
+}
+
+.fifthRow {
+    grid-area: fifthRow;
+    border: 1px solid white;
+}
+
+centerContainer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    column-gap: 10px;
+    row-gap: 5px;
+    grid-template-areas: 
+    "readOut readOut readOut readOut"
+    "readOut readOut readOut readOut"
+    "topRow topRow topRow topRow"
+    "secondRow secondRow secondRow secondRow"
+    "thirdRow thirdRow thirdRow thirdRow"
+    "fourthRow fourthRow fourthRow fourthRow"
+    "fifthRow fifthRow fifthRow fifthRow";
+
+    border: 1px solid white;
+    width: 300px;
+    height: 600px;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
