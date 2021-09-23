@@ -4,38 +4,51 @@ html {
 
 .readOutArea {
     grid-area: readOut;
-    border: 1px solid white;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    border: 1px solid grey;
 }
 
 .topRow {
     grid-area: topRow;
-    border: 1px solid white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .secondRow {
     grid-area: secondRow;
-    border: 1px solid white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .thirdRow {
     grid-area: thirdRow;
-    border: 1px solid white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .fourthRow {
     grid-area: fourthRow;
-    border: 1px solid white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .fifthRow {
     grid-area: fifthRow;
-    border: 1px solid white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 centerContainer {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: auto;
+    grid-template-rows: 1fr 1fr 1fr 80px 80px 80px 80px;
     column-gap: 10px;
     row-gap: 5px;
     grid-template-areas: 
@@ -47,9 +60,8 @@ centerContainer {
     "fourthRow fourthRow fourthRow fourthRow"
     "fifthRow fifthRow fifthRow fifthRow";
 
-    border: 1px solid white;
-    width: 300px;
-    height: 600px;
+    width: 370px;
+    height: 665px;
 
     position: fixed;
     top: 50%;
@@ -57,4 +69,41 @@ centerContainer {
     transform: translate(-50%, -50%);
 }
 
+h1 {
+    margin-right: 15px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    font-size: 4em;
+    color: white;
+}
 
+#circleButtons {
+    border-radius: 50%;
+    height: 90%;
+    width: 20%;
+    font-size: 1.5em;
+    background-color: gray;
+    color: white;
+}
+
+#squareButtons {
+    width: 48%;
+    height: 90%;
+    border-radius: 10px;
+    font-size: 2em;
+    background-color: #328EDC;
+}
+
+#actionButtons {
+    border-radius: 50%;
+    height: 90%;
+    width: 20%;
+    font-size: 1.5em;
+    background-color: #328EDC;
+    color: white;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+}
