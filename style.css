@@ -2,12 +2,18 @@ html {
     background-color: black;
 }
 
-.readOutArea {
+.readOutAreaOne {
     grid-area: readOut;
     display: flex;
-    justify-content: end;
-    align-items: end;
-    border: 1px solid grey;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.readOutAreaTwo {
+    grid-area: readOutTwo;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
 }
 
 .topRow {
@@ -53,7 +59,7 @@ centerContainer {
     row-gap: 5px;
     grid-template-areas: 
     "readOut readOut readOut readOut"
-    "readOut readOut readOut readOut"
+    "readOutTwo readOutTwo readOutTwo readOutTwo"
     "topRow topRow topRow topRow"
     "secondRow secondRow secondRow secondRow"
     "thirdRow thirdRow thirdRow thirdRow"
@@ -71,11 +77,19 @@ centerContainer {
 
 h1 {
     margin-right: 15px;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
     margin-top: 10px;
     font-family: arial;
     font-size: 4em;
     color: white;
+}
+
+h3 {
+    margin-right: 15px;
+    margin-bottom: 0px;
+    margin-top: 10px;
+    color: white;
+    font-family: arial;
 }
 
 #circleButtons {
@@ -88,8 +102,8 @@ h1 {
 }
 
 #squareButtons {
-    width: 48%;
-    height: 90%;
+    width: 45%;
+    height: 80%;
     border-radius: 10px;
     font-size: 2em;
     background-color: rgb(124, 124, 124);;
