@@ -118,6 +118,15 @@ h3 {
     color: white;
 }
 
+.equals {
+    border-radius: 50%;
+    height: 90%;
+    width: 20%;
+    font-size: 1.5em;
+    background-color: #328EDC;
+    color: white;
+}
+
 button {
     border: none;
     cursor: pointer;
