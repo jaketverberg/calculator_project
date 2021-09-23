@@ -106,7 +106,8 @@ h3 {
     height: 80%;
     border-radius: 10px;
     font-size: 2em;
-    background-color: rgb(124, 124, 124);;
+    background-color: rgb(124, 124, 124);
+    color: black;
 }
 
 #actionButtons {
