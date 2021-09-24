@@ -54,7 +54,7 @@ const subtract = function() {
 };
 
 const multiply = function(arr) {
-    return arguments[0] + arguments[1];
+    return arguments[0] * arguments[1];
   };
 
   const divide = function(arr) {
@@ -62,7 +62,7 @@ const multiply = function(arr) {
   };
 
 
-//Main function to actually do math
+//Main function 
 function operate() {
     let args = [...arguments];
     let answer = 0;
@@ -75,30 +75,31 @@ function operate() {
         switch (operator) {
             case '+':
                 answer = add(firstNum, secondNum);
-                args.splice(0, 3, answer);
+                args[0].splice(0, 3);
+                args[0].unshift(answer);
                 break;
             case '-':
                 answer = subtract(firstNum, secondNum);
-                args.splice(0, 3, answer);
+                args[0].splice(0, 3);
+                args[0].unshift(answer);
                 break;
             case 'x':
                 answer = multiply(firstNum, secondNum);
-                args.splice(0, 3, answer);
+                args[0].splice(0, 3);
+                args[0].unshift(answer);
                 break;
             case '÷':
                 answer = divide(firstNum, secondNum);
-                args.splice(0, 3, answer);
+                args[0].splice(0, 3);
+                args[0].unshift(answer);
                 break;
-        }
+        }//end of SWITCH
+    }//end of While Loop
 
     INPUT.textContent = `${answer}`;
     READOUT.textContent = `${answer}`;
     toBeOperated = [];
-
-    }
-
-
-}
+}//end of Operate function
 
 EQUALS_BUTTON.addEventListener('click', () => {
     pushToBeOperated(parseFloat(INPUT.textContent));
