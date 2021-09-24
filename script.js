@@ -45,6 +45,7 @@ function deleteLast() {
 }
 
 
+//calculator functions
 const add = function() {
 	return arguments[0] + arguments[1];
 };
@@ -62,11 +63,13 @@ const multiply = function(arr) {
   };
 
 
+
 //Main function 
 function operate() {
     let args = [...arguments];
     let answer = 0;
 
+    //while the arguments are at a length we can compute
     while (args[0].length >= 3) {
         const firstNum = args[0][0];
         const secondNum = args[0][2];
@@ -75,32 +78,38 @@ function operate() {
         switch (operator) {
             case '+':
                 answer = add(firstNum, secondNum);
-                args[0].splice(0, 3);
-                args[0].unshift(answer);
+                args[0].splice(0, 3, answer);
                 break;
             case '-':
                 answer = subtract(firstNum, secondNum);
-                args[0].splice(0, 3);
-                args[0].unshift(answer);
+                args[0].splice(0, 3, answer);
                 break;
             case 'x':
                 answer = multiply(firstNum, secondNum);
-                args[0].splice(0, 3);
-                args[0].unshift(answer);
+                args[0].splice(0, 3, answer);
                 break;
             case '÷':
                 answer = divide(firstNum, secondNum);
-                args[0].splice(0, 3);
-                args[0].unshift(answer);
+                args[0].splice(0, 3, answer);
                 break;
         }//end of SWITCH
     }//end of While Loop
 
+    if (!Number.isInteger(answer)) {
+        answer = Math.round(100*answer)/100;
+    }
+
+    //Larger number reads out the answer for user to see
     INPUT.textContent = `${answer}`;
+    //Smaller number reads out answer to be used for further computation
     READOUT.textContent = `${answer}`;
+    //Reset operation array for new numbers
     toBeOperated = [];
+
 }//end of Operate function
 
+
+//Event Listeners
 EQUALS_BUTTON.addEventListener('click', () => {
     pushToBeOperated(parseFloat(INPUT.textContent));
     operate(toBeOperated);
@@ -113,8 +122,6 @@ CLEAR_BUTTON.addEventListener('click', () => {
 DELETE_BUTTON.addEventListener('click', () => {
     deleteLast();
 });
-
-
 
 ACTION_BUTTONS.forEach((button) => {
     button.addEventListener('click', () => {
