@@ -17,11 +17,11 @@ function pushToBeOperated(e) {
 }
 
 function addTextToReadOut (e) {
-    READOUT.textContent += `${e}`;
     INPUT.textContent += `${e}`;
 }
 
 function actionButtonTextChange (e) {
+    READOUT.textContent += INPUT.textContent;
     READOUT.textContent += ` ${e} `;
     INPUT.textContent = '';
 }
@@ -100,8 +100,8 @@ function operate() {
 
     //Larger number reads out the answer for user to see
     INPUT.textContent = `${answer}`;
-    //Smaller number reads out answer to be used for further computation
-    READOUT.textContent = `${answer}`;
+    //Smaller number resets
+    READOUT.textContent = '';
     //Reset operation array for new numbers
     toBeOperated = [];
 
