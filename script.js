@@ -95,9 +95,8 @@ function operate() {
         }//end of SWITCH
     }//end of While Loop
 
-    if (!Number.isInteger(answer)) {
-        answer = Math.round(100*answer)/100;
-    }
+    //if the passed number is an float then round it to the hundreth.
+    !Number.isInteger(answer) ? answer = Math.round(100*answer)/100 : false;
 
     //Larger number reads out the answer for user to see
     INPUT.textContent = `${answer}`;
