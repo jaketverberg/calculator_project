@@ -10,9 +10,11 @@ const DIVIDE_BUTTON = document.querySelector('.divide');
 const MULTIPLY_BUTTON = document.querySelector('.multiply');
 const EQUALS_BUTTON = document.querySelector('.equals');
 
-let arrInputs = [];
+let toBeOperated = [];
 
-
+function pushToBeOperated(e) {
+    toBeOperated.push(e);
+}
 
 function addTextToReadOut (e) {
     READOUT.textContent += `${e}`;
@@ -27,7 +29,7 @@ function actionButtonTextChange (e) {
 function clearAll () {
     READOUT.textContent = '';
     INPUT.textContent = '';
-    arrInputs = [];
+    toBeOperated = [];
 }
 
 function deleteLast() {
@@ -42,19 +44,65 @@ function deleteLast() {
     }   
 }
 
-function pushNumber() {
-    let number = parseInt(INPUT.textContent);
-    arrInputs.push(number);
-    console.log(arrInputs);
-}
 
-function equalsWhat () {
-    
-}
+const add = function() {
+	return arguments[0] + arguments[1];
+};
 
+const subtract = function() {
+	return arguments[0] - arguments[1]
+};
+
+const multiply = function(arr) {
+    return arguments[0] + arguments[1];
+  };
+
+  const divide = function(arr) {
+    return arguments[0] / arguments[1];
+  };
+
+
+//Main function to actually do math
+function operate() {
+    let args = [...arguments];
+    let answer = 0;
+
+    while (args[0].length >= 3) {
+        const firstNum = args[0][0];
+        const secondNum = args[0][2];
+        const operator = args[0][1];
+
+        switch (operator) {
+            case '+':
+                answer = add(firstNum, secondNum);
+                args.splice(0, 3, answer);
+                break;
+            case '-':
+                answer = subtract(firstNum, secondNum);
+                args.splice(0, 3, answer);
+                break;
+            case 'x':
+                answer = multiply(firstNum, secondNum);
+                args.splice(0, 3, answer);
+                break;
+            case '÷':
+                answer = divide(firstNum, secondNum);
+                args.splice(0, 3, answer);
+                break;
+        }
+
+    INPUT.textContent = `${answer}`;
+    READOUT.textContent = `${answer}`;
+    toBeOperated = [];
+
+    }
+
+
+}
 
 EQUALS_BUTTON.addEventListener('click', () => {
-    equalsWhat();
+    pushToBeOperated(parseFloat(INPUT.textContent));
+    operate(toBeOperated);
 });
 
 CLEAR_BUTTON.addEventListener('click', () => {
@@ -70,7 +118,8 @@ DELETE_BUTTON.addEventListener('click', () => {
 ACTION_BUTTONS.forEach((button) => {
     button.addEventListener('click', () => {
         let textToUse = `${button.textContent}`;
-        pushNumber();
+        pushToBeOperated(parseFloat(INPUT.textContent));
+        pushToBeOperated(`${button.textContent}`);
         actionButtonTextChange(textToUse);
     })
 })
