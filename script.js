@@ -4,13 +4,11 @@ const INPUT_BUTTONS = document.querySelectorAll('#circleButtons');
 const ACTION_BUTTONS = document.querySelectorAll('#actionButtons')
 const CLEAR_BUTTON = document.querySelector('.clear');
 const DELETE_BUTTON = document.querySelector('.delete');
-const ADDITION_BUTTON = document.querySelector('.add');
-const SUBTRACTION_BUTTON = document.querySelector('.subtract');
-const DIVIDE_BUTTON = document.querySelector('.divide');
-const MULTIPLY_BUTTON = document.querySelector('.multiply');
 const EQUALS_BUTTON = document.querySelector('.equals');
 
 let toBeOperated = [];
+INPUT.textContent = '0';
+
 
 function pushToBeOperated(e) {
     toBeOperated.push(e);
@@ -21,14 +19,17 @@ function addTextToReadOut (e) {
 }
 
 function actionButtonTextChange (e) {
-    READOUT.textContent += INPUT.textContent;
-    READOUT.textContent += ` ${e} `;
+    READOUT.textContent += INPUT.textContent + ` ${e} `;
     INPUT.textContent = '';
+}
+
+function initialInputClear() {
+    INPUT.textContent.charAt(0) === '0' ? INPUT.textContent = INPUT.textContent.slice(1) : false;
 }
 
 function clearAll () {
     READOUT.textContent = '';
-    INPUT.textContent = '';
+    INPUT.textContent = '0';
     toBeOperated = [];
 }
 
@@ -36,6 +37,10 @@ function deleteLast() {
     let str = INPUT.textContent;
     let readOutStr = READOUT.textContent;
     INPUT.textContent = str.slice(0, -1);
+
+    if (INPUT.textContent === '') {
+        INPUT.textContent = '0';
+    }
 
     if (readOutStr.slice(-1) == " ") {
         return;
@@ -127,6 +132,7 @@ ACTION_BUTTONS.forEach((button) => {
         let textToUse = `${button.textContent}`;
         pushToBeOperated(parseFloat(INPUT.textContent));
         pushToBeOperated(`${button.textContent}`);
+        initialInputClear();
         actionButtonTextChange(textToUse);
     })
 })
@@ -134,6 +140,7 @@ ACTION_BUTTONS.forEach((button) => {
 INPUT_BUTTONS.forEach((button) => {
     button.addEventListener('click', () => {
         let textToUse = `${button.textContent}`;
+        initialInputClear();
         addTextToReadOut(textToUse);
     });
   });
